@@ -1,6 +1,5 @@
 .active-users {
     width: 250px;
-    /* border: 2px solid black; */
     box-shadow: 0 0 1px black;
     margin-right: 2px;
     border-radius: 10px;
@@ -8,30 +7,26 @@
     background-color: white;
 }
 .active-list {
-    /* align-items: center; */
     width: 100%;
 }
 .active-name:hover {
     background: rgb(210, 209, 209);
-    /* font-weight: bold; */
 }
 .active-receiver {
     font-weight: 500;
 }
 h3 {
-    color: rgb(112,23,45);
+    /* color: rgb(112, 23, 45); */
+    color: black;
 }
 .active-name {
-    /* background: red; */
-    /* margin: 2px 0; */
-    /* width: 100%; */
     cursor: pointer;
-    color: rgb(112,23,45);
+    color: rgb(112, 23, 45);
+    /* color: black; */
     display: flex;
     flex-direction: column;
     padding: 8px;
     padding-left: 10px;
-    /* text-align: center; */
 }
 .active-status {
     font-size: 12px;

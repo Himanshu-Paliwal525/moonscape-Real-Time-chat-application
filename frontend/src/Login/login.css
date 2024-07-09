@@ -1,0 +1,48 @@
+
+.login-info {
+    background: radial-gradient(rgb(248, 175, 41),rgb(193, 225, 237));
+    padding: 10px;
+    height: 675px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-info > div {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 50px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+}
+.login-input {
+    
+    width: 300px;
+    padding: 5px 9px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    margin-bottom: 20px;
+    font-family: "Poppins", sans-serif;
+    font-size: 17px;
+}
+h1 {
+    margin-bottom: 60px;
+}
+.login-btn {
+    box-shadow: 0 0 1px black;
+    text-shadow: 0 0 1px white;
+    cursor: pointer;
+    background: rgb(112, 23, 45);
+    border: none;
+    color: white;
+    padding: 7px 19px;
+    margin-top: 10px;
+    font-family: "Poppins", sans-serif;
+    font-size: 17px;
+    border-radius: 10px;
+}
+.moonscape-logo{
+    mix-blend-mode: multiply;
+}

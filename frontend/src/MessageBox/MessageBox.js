@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { socket } from "../socket";
+import "./MessageBox.css";
 
 const MessageBox = ({
     fetchedMessages,

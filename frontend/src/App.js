@@ -2,9 +2,13 @@ import React, { useState, useEffect } from "react";
 import { socket } from "./socket";
 import "./App.css";
 import ActiveUsers from "./Active Users/ActiveUser";
-import MessageBox from "./message box/MessageBox";
+import MessageBox from "./MessageBox/MessageBox";
+import MessageBar from "./MessageBar/messageBar";
+import Login from "./Login/login";
+import moonscape from "./Images/moonscape(black).png";
 
 const App = () => {
+    const [visible, setVisible] = useState({ display: "none" });
     const [message, setMessage] = useState({
         user: "",
         msg: "",
@@ -13,12 +17,6 @@ const App = () => {
     const [receiver, setReceiver] = useState(null);
     const [fetchedMessages, setFetchedMessages] = useState([]);
     const [activeUser, setActiveUser] = useState([]);
-
-    const handleClick = () => {
-        if (message.user.trim() !== "") {
-            socket.emit("newUser", message.user);
-        }
-    };
 
     useEffect(() => {
         const handleNewActiveUser = (allActiveUsers) => {
@@ -56,73 +54,54 @@ const App = () => {
             socket.emit("ownMessage", { message, time, timestamp });
             setMessage((prev) => ({ ...prev, msg: "" }));
         } else {
-            // Optionally handle case where no receiver is selected
             console.log("Please select a receiver before sending a message.");
         }
     };
-    
 
     return (
-        <div>
-            <div className="info">
-                <input
-                    type="text"
-                    placeholder="Enter your name"
-                    value={message.user}
-                    name="user"
-                    onChange={(e) => {
-                        setMessage((prev) => ({
-                            ...prev,
-                            [e.target.name]: e.target.value,
-                        }));
-                    }}
-                />
-                <button type="button" onClick={handleClick}>
-                    Submit
-                </button>
-            </div>
-            <h1>Chat Application</h1>
-            <h2>{message.user}</h2>
-            <div className="home">
-                <ActiveUsers
-                    setMessage={setMessage}
-                    activeUser={activeUser}
-                    setReceiver={setReceiver}
-                    user={message.user}
-                />
-                <div className="chatroom">
-                    <div className="chat-display">
-                        <span className="receiver-name">
-                            {receiver ? receiver : "no-one"}
-                        </span>
-                        <MessageBox
-                            fetchedMessages={fetchedMessages}
-                            setFetchedMessages={setFetchedMessages}
+        <>
+            <Login
+                message={message}
+                setMessage={setMessage}
+                setVisible={setVisible}
+            />
+            <div style={visible}>
+                <div className="app-header">
+                    <button className="login-btn logout">logout</button>
+                    <img
+                        src={moonscape}
+                        alt="logo"
+                        className="moonscape-logo app-logo"
+                    />
+                </div>
+                <div className="home">
+                    <ActiveUsers
+                        setMessage={setMessage}
+                        activeUser={activeUser}
+                        setReceiver={setReceiver}
+                        user={message.user}
+                    />
+                    <div className="chatroom">
+                        <div className="chat-display">
+                            <span className="receiver-name">
+                                {receiver ? receiver : "no-one"}
+                            </span>
+                            <MessageBox
+                                fetchedMessages={fetchedMessages}
+                                setFetchedMessages={setFetchedMessages}
+                                message={message}
+                                receiver={receiver}
+                            />
+                        </div>
+                        <MessageBar
                             message={message}
-                            receiver={receiver}
+                            setMessage={setMessage}
+                            sendMessage={sendMessage}
                         />
-                    </div>
-                    <div className="msg">
-                        <input
-                            className="msg-box"
-                            type="text"
-                            placeholder="Type your message"
-                            value={message.msg}
-                            name="msg"
-                            onChange={(e) =>
-                                setMessage((prev) => ({
-                                    ...prev,
-                                    [e.target.name]: e.target.value,
-                                }))
-                            }
-                        />
-                        <button className="msg-send" onClick={sendMessage}>
-                            Send
-                        </button>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 

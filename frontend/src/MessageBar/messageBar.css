@@ -1,0 +1,34 @@
+.msg {
+    padding: 7px;
+    width: 600px;
+    display: flex;
+}
+
+.msg-box {
+    border: none;
+    box-shadow: 0 0 4px black;
+    z-index: 1;
+    outline: none;
+    width: 100%;
+    margin: 0px 10px;
+    padding: 10px 9px;
+    border-radius: 10px;
+    font-size: 17px;
+}
+.msg-send {
+    box-shadow: 0 0 1px black;
+    font-size: 17px;
+    color: white;
+    border-radius: 10px;
+    padding: 5px 9px;
+    border: none;
+    cursor: pointer;
+    background: rgb(0, 0, 0);
+}
+.msg-send:hover {
+    background: rgb(112,23,45);
+}
+.msg-send:active {
+    background: rgb(127, 63, 79);
+    
+}

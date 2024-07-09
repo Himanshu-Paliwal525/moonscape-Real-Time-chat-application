@@ -36,8 +36,26 @@
         transform: rotate(360deg);
     }
 }
+
+.app-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logout {
+    position: absolute;
+    right: 40px;
+    top: 55px;
+}
+.moonscape-logo {
+    margin-top: 30px;
+    margin-bottom: 80px;
+    height: 100px;
+    z-index: 1;
+}
 .home {
     display: flex;
+    justify-content: center;
 }
 
 .chatroom {
@@ -45,54 +63,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* width: 600px; */
-}
-.msg-container {
-    padding-top: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    width: 600px;
-    height: 500px;
-    overflow-y: auto;
-    /* border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px; */
-    box-shadow: 0 0 1px black;
-    background: lightcyan;
-    
-    
-}
-.msg {
-    background: lightcyan;
-    padding: 3px;
-    /* border-radius: 10px; */
-    width: 600px;
-    display: flex;
-    /* margin: 5px 5px; */
-    box-shadow: 0 0 1px black;
-    /* justify-content: flex-end; */
-    /* justify-content: space-around; */
 }
 
-.msg-box {
-    border: none;
-    box-shadow: 0 0 1px black;
-    z-index: 1;
-    outline: none;
-    width: 100%;
-    margin: 0px 10px;
-    padding: 10px 9px;
-    border-radius: 10px;
-    font-size: 17px;
-}
-.msg-send {
-    font-size: 17px;
-    background: rgb(112,23,45);
-    color: white;
-    border-radius: 10px;
-    padding: 5px 9px;
-    border: none;
-}
 .chat-display {
     display: flex;
     flex-direction: column;
@@ -102,35 +74,10 @@
     border-top-right-radius: 10px;
     box-shadow: 0 0 1px black;
     font-size: 20px;
+    /* color: #ffcc00; */
     padding: 20px;
-    /* color: white; */
-    /* background: linear-gradient(#f1dba7,skyblue); */
-    /* background-color: skyblue; */
     color: white;
-    background-color:rgb(112,23,45);
+    /* text-shadow: 1px 1px 0.3px black; */
+    background-color: rgb(112, 23, 45);
     font-weight: bold;
-    /* margin-bottom: 5px; */
-}
-
-.msg-show {
-    /* max-width: 200px; */
-    margin: 5px 10px;
-    /* border: 1px solid black; */
-    padding: 5px 7px;
-    background: rgb(62, 88, 97);
-    border-radius: 10px;
-    display: flex;
-    align-items: flex-end;
-    gap: 10px;
-}
-.msg-msg {
-    color: white;
-}
-.msg-timestamp {
-    font-size: 12px;
-    color: rgb(205, 205, 205);
-}
-.msg-fetch {
-    display: flex;
-    width: 100%;
 }
