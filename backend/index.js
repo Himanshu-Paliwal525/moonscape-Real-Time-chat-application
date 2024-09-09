@@ -1,15 +1,11 @@
-const express = require("express");
 const { Server } = require("socket.io");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
-const app = express();
-app.use(cors());
-
 const PORT = process.env.PORT || 5000;
-const mongoURI =
-    process.env.MONGODB_URI || "mongodb://localhost:27017/chat-app";
+const mongoURI = process.env.MONGODB_URI || "mongodb://localhost:27017/chat-app";
 mongoose.connect(mongoURI);
+
 const Schema = new mongoose.Schema({
     user: { type: String, required: true },
     receiver: { type: String, required: true },
@@ -75,8 +71,6 @@ io.on("connection", (socket) => {
         }).lean();
 
         let allMessages = [];
-        let sender;
-        let recepient;
         const sortMessagesByTimestamp = (messages) => {
             return messages.sort((a, b) => a.timestamp - b.timestamp);
         };
@@ -98,9 +92,8 @@ io.on("connection", (socket) => {
             ];
         }
 
-        // Sort allMessages array by timestamp
         allMessages = sortMessagesByTimestamp(allMessages);
-        socket.emit("sendMessage", { sender, recepient, allMessages });
+        socket.emit("sendMessage", { allMessages });
         io.to(message.receiver).emit("send", {
             all: allMessages,
             recepient: message.receiver,
