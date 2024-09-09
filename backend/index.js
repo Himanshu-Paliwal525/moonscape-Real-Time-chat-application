@@ -1,3 +1,4 @@
+require("dotenv").config();
 const { Server } = require("socket.io");
 const mongoose = require("mongoose");
 const { mongoURI, PORT } = require("./config");
@@ -7,7 +8,7 @@ mongoose.connect(mongoURI);
 
 const io = new Server({
     cors: {
-        origin: "http://localhost:3000",
+        origin: "https://moonscape-kappa.vercel.app/",
     },
 });
 

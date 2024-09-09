@@ -3,7 +3,7 @@ import { socket } from "../socket";
 import "./login.css";
 import moonscape from "../Images/moonscape(black).png";
 
-const Login = ({ message, setMessage, setVisible }) => {
+const Login = ({ setMessage, setVisible }) => {
     const [signup, setSignup] = useState(false);
     const [formData, setFormData] = useState({
         username: "",
@@ -13,7 +13,6 @@ const Login = ({ message, setMessage, setVisible }) => {
 
     useEffect(() => {
         socket.on("signupSuccess", (token) => {
-            console.log("Token generated successfully", token);
             localStorage.setItem("token", token);
             setVisible((prev) => !prev);
         });
@@ -22,7 +21,6 @@ const Login = ({ message, setMessage, setVisible }) => {
         });
 
         socket.on("loginSuccess", (token) => {
-            console.log("Login Successful with token: ", token);
             localStorage.setItem("token", token);
             setVisible((prev) => !prev);
         });

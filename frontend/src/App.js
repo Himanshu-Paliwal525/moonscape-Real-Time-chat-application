@@ -60,7 +60,6 @@ const App = () => {
 
     return visible ? (
         <Login
-            message={message}
             setMessage={setMessage}
             setVisible={setVisible}
         />
@@ -73,6 +72,8 @@ const App = () => {
                         localStorage.removeItem("token");
                         socket.emit("logout");
                         setVisible((prev) => !prev);
+                        setReceiver(null);
+                        setFetchedMessages([]);
                     }}
                 >
                     logout

@@ -42,7 +42,6 @@ const setupSocketHandlers = (io) => {
                     socket.emit("loginSuccess", token);
                     socket.join(username);
                     users[socket.id] = username;
-                    console.log("Users after login: ", users);
                     io.emit("newActiveUser", users);
                 } else {
                     socket.emit("loginError", { error: "Invalid Credentials!" });
@@ -142,7 +141,6 @@ const setupSocketHandlers = (io) => {
         socket.on("logout", () => {
             console.log("User logged out:", socket.id);
             delete users[socket.id];
-            console.log(users);
             io.emit("newActiveUser", users);
         });
 
