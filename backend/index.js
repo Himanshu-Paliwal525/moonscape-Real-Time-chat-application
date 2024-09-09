@@ -8,7 +8,7 @@ mongoose.connect(mongoURI);
 
 const io = new Server({
     cors: {
-        origin: "https://moonscape-kappa.vercel.app/",
+        origin: "https://moonscape-kappa.vercel.app",
     },
 });
 
