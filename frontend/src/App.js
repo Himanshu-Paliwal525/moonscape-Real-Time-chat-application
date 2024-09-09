@@ -8,7 +8,7 @@ import Login from "./Login/login";
 import moonscape from "./Images/moonscape(black).png";
 
 const App = () => {
-    const [visible, setVisible] = useState({ display: "none" });
+    const [visible, setVisible] = useState(true);
     const [message, setMessage] = useState({
         user: "",
         msg: "",
@@ -54,54 +54,62 @@ const App = () => {
             socket.emit("ownMessage", { message, time, timestamp });
             setMessage((prev) => ({ ...prev, msg: "" }));
         } else {
-            console.log("Please select a receiver before sending a message.");
+            alert("Please select a receiver before sending a message.");
         }
     };
 
-    return (
-        <>
-            <Login
-                message={message}
-                setMessage={setMessage}
-                setVisible={setVisible}
-            />
-            <div style={visible}>
-                <div className="app-header">
-                    <button className="login-btn logout">logout</button>
-                    <img
-                        src={moonscape}
-                        alt="logo"
-                        className="moonscape-logo app-logo"
-                    />
-                </div>
-                <div className="home">
-                    <ActiveUsers
-                        setMessage={setMessage}
-                        activeUser={activeUser}
-                        setReceiver={setReceiver}
-                        user={message.user}
-                    />
-                    <div className="chatroom">
-                        <div className="chat-display">
-                            <span className="receiver-name">
-                                {receiver ? receiver : "no-one"}
-                            </span>
-                            <MessageBox
-                                fetchedMessages={fetchedMessages}
-                                setFetchedMessages={setFetchedMessages}
-                                message={message}
-                                receiver={receiver}
-                            />
-                        </div>
-                        <MessageBar
+    return visible ? (
+        <Login
+            message={message}
+            setMessage={setMessage}
+            setVisible={setVisible}
+        />
+    ) : (
+        <div>
+            <div className="app-header">
+                <button
+                    className="login-btn logout"
+                    onClick={() => {
+                        localStorage.removeItem("token");
+                        socket.emit("logout");
+                        setVisible((prev) => !prev);
+                    }}
+                >
+                    logout
+                </button>
+                <img
+                    src={moonscape}
+                    alt="logo"
+                    className="moonscape-logo app-logo"
+                />
+            </div>
+            <div className="home">
+                <ActiveUsers
+                    setMessage={setMessage}
+                    activeUser={activeUser}
+                    setReceiver={setReceiver}
+                    user={message.user}
+                />
+                <div className="chatroom">
+                    <div className="chat-display">
+                        <span className="receiver-name">
+                            {receiver ? receiver : "no-one"}
+                        </span>
+                        <MessageBox
+                            fetchedMessages={fetchedMessages}
+                            setFetchedMessages={setFetchedMessages}
                             message={message}
-                            setMessage={setMessage}
-                            sendMessage={sendMessage}
+                            receiver={receiver}
                         />
                     </div>
+                    <MessageBar
+                        message={message}
+                        setMessage={setMessage}
+                        sendMessage={sendMessage}
+                    />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

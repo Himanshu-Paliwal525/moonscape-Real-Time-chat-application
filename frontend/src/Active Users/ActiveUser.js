@@ -7,7 +7,6 @@ const ActiveUsers = ({ setReceiver, setMessage, activeUser, user }) => {
         setMessage((prev) => ({ ...prev, receiver }));
         socket.emit("setReceiver", { user, receiver });
         setReceiver(receiver);
-        console.log("user =", user, "receiver =", receiver);
     };
 
     return (

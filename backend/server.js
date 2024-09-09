@@ -1,7 +1,7 @@
 const { Server } = require("socket.io");
 const mongoose = require("mongoose");
 const { mongoURI, PORT } = require("./config");
-const { setupSocketHandlers } = require("./sockets");
+const { setupSocketHandlers } = require(".");
 
 mongoose.connect(mongoURI);
 

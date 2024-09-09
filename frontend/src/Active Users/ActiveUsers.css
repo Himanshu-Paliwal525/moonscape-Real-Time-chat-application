@@ -1,6 +1,7 @@
 .active-users {
     width: 250px;
     box-shadow: 0 0 1px black;
+    font-size: 14px;
     margin-right: 2px;
     border-radius: 10px;
     margin-left: 20px;
@@ -15,14 +16,9 @@
 .active-receiver {
     font-weight: 500;
 }
-h3 {
-    /* color: rgb(112, 23, 45); */
-    color: black;
-}
 .active-name {
     cursor: pointer;
     color: rgb(112, 23, 45);
-    /* color: black; */
     display: flex;
     flex-direction: column;
     padding: 8px;
