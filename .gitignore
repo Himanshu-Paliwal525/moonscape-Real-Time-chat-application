@@ -1,0 +1,62 @@
+# Node modules (Backend and Frontend)
+frontend/node_modules/
+backend/node_modules/
+
+# Build output (Backend and Frontend)
+frontend/dist/
+frontend/out/
+frontend/build/
+
+backend/dist/
+backend/out/
+backend/build/
+
+# Log files
+*.log
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Electron build files
+*.dmg
+*.exe
+*.app
+*.deb
+*.rpm
+*.tar.gz
+*.zip
+
+# Vite cache and build files
+.vite/
+*.tsbuildinfo
+
+# Electron and Vite specific
+/.vite/
+/electron-build/
+/electron-output/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE/editor specific files
+.vscode/
+.idea/
+
+# VS Code settings (if you prefer to exclude local settings)
+.vscode/*
+
+# JetBrains specific files (optional)
+.idea/
+
+# Optional: Ignore test coverage and reports
+coverage/
+
+# Other local config files (e.g., for Docker or CI/CD)
+*.swp
+*.swo
